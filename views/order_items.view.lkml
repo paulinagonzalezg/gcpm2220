@@ -66,8 +66,18 @@ view: order_items {
   # Click on the type parameter to see all the options in the Quick Help panel on the right.
 
   measure: total_sale_price {
-    type: sum
+    group_label: "Group Label"
     sql: ${sale_price} ;;
+    value_format: "$0.000"
+    description: "Description"
+    label: "label"
+    type: number
+    html: {% if total_sale_price._value < 500 %}
+         <p style="color: green" >{{rendered_value}} <p>
+        {% else %}
+         <p style="color: red" >{{rendered_value}} <p>
+        {% endif %}
+        ;;
   }
 
   measure: average_sale_price {
